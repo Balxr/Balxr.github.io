@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بلال X راكون - صانع محتوى Resident Evil</title>
+    <meta name="description" content="صفحة معجبين ومحتوى Resident Evil لصانع المحتوى بلال X راكون. استكشف عالم الرعب والزومبي معنا.">
+    <meta name="keywords" content="Resident Evil, زومبي, بلال راكون, ألعاب رعب, محتوى عربي, Resident Evil بالعربي">
+    
+    <!-- الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- أيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!--ايقونة التحميل loading.png-->
+    <link rel="icon" type="image/x-icon" href="loading.png">
+
+    <style>
+        :root {
+            --dark-bg: #0a0a0a;
+            --dark-overlay: #1a1a1a;
+            --text-light: #f1f1f1;
+            --text-gray: #a0a0a0;
+            --blood-red: #8b0000;
+            --accent-red: #ff0000;
+            --transition: all 0.3s ease;
+        }
+        
+        :root[data-theme="light"] {
+            --dark-bg: #f1f1f1;
+            --dark-overlay: #e1e1e1;
+            --text-light: #0a0a0a;
+            --text-gray: #4a4a4a;
+            --blood-red: #cc0000;
+            --accent-red: #ff0000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMWEyMDIzIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxZjFmMWYiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=');
+            transition: var(--transition);
+        }
+        
+        body[dir="ltr"] {
+            font-family: 'Courier New', monospace;
+            direction: ltr;
+        }
+        
+        .english-text {
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* شاشة التحميل */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-icon {
+            background-image: url('loading.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+            animation: pulse 2s infinite;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /*شعار أمبريلا في نفس الصورة loading.png*/
+        .umbrella-logo:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--dark-bg);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        
+        /* التمرير الشريطي */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--blood-red);
+            border-radius: 4px;
+        }
+        
+        /* العناصر العامة */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--blood-red);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--blood-red);
+        }
+        
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        /* زر التبديل بين الوضع الداكن والفاتح */
+        .theme-switch {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--blood-red);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+        
+        .theme-switch:hover {
+            transform: rotate(30deg);
+        }
+        
+        /* زر تبديل اللغة */
+        .language-switch {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-overlay);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: var(--transition);
+        }
+        
+        /* الهيدر */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        header.sticky {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--blood-red);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blood-red);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--blood-red);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* قسم البطل */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://www.techspot.com/images2/news/bigimage/2022/08/2022-08-12-image-9.jpg') no-repeat center center/cover;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .hero-content h1 span {
+            color: var(--blood-red);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--dark-overlay);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--blood-red);
+            transform: translateY(-5px);
+        }
+        
+        /* معرض الصور */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--blood-red);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .download-btn:hover {
+            background: var(--accent-red);
+        }
+        
+        /* قسم الفيديوهات */
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            background: var(--dark-overlay);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-thumbnail {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .video-info p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+        }
+        
+        .watch-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--blood-red);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .watch-btn:hover {
+            background: var(--accent-red);
+        }
+        
+        /* قسم عني */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--blood-red);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* قسم التواصل */
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background: var(--dark-overlay);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--blood-red);
+            margin-bottom: 15px;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .contact-card a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-card a:hover {
+            color: var(--blood-red);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--dark-overlay);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--blood-red);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 20px;
+        }
+        
+        .footer-logo:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: 35px;
+            background: var(--dark-overlay);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        
+        .footer-text {
+            color: var(--text-gray);
+            margin-top: 20px;
+        }
+        
+        /* تأثيرات الزومبي */
+        .zombie {
+            position: fixed;
+            width: 100px;
+            height: 150px;
+            background: url('https://orig00.deviantart.net/fb22/f/2014/116/c/9/headless_zombie_pixel_animation_by_lcdazzara-d7g3h4i.png') no-repeat center center/contain;
+            pointer-events: none;
+            z-index: 999;
+            transition: transform 0.1s ease;
+            image-rendering: pixelated;
+        }
+        
+        /* التصميم المتجاوب */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--dark-overlay);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .zombie {
+                display: none; /* إخفاء الزومبي على الشاشات الصغيرة */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .social-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .contact-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div id="loading-screen">
+        <div class="loading-icon"></div>
+        <p>جاري التحميل...</p>
+    </div>
+
+    <!-- تأثير الزومبي -->
+    <div class="zombie"></div>
+
+    <!-- الهيدر -->
+    <header id="header">
+        <div class="container nav-container">
+            <img src="icon.png" alt="شعار بلال X راكون">
+            <!--تصميم يكون الشعار اصغر بقليل-->
+            <style>
+                header img {
+                    max-width: 50px;
+                    height: auto;
+                }
+            </style>
+
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#gallery">المعرض</a></li>
+                <li><a href="#videos">الفيديوهات</a></li>
+                <li><a href="#about">عنّي</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- قسم البطل -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <img src="title.png" alt="شعار بلال X راكون">
+            <!--تصميم يكون الشعار اصغر بقليل-->
+            <style>
+                .hero-content img {
+                    max-width: 80%;
+                    height: auto;
+                }
+            </style>
+
+        </div>
+    </section>
+
+    <!-- معرض الصور -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>معرض الخلفيات</h2>
+                <p>خلفيات وصور مستوحاة من عالم Resident Evil</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- سيتم إضافة الصور ديناميكياً باستخدام JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفيديوهات -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>الفيديوهات</h2>
+                <p>أحدث محتوى الفيديو على منصات التواصل</p>
+            </div>
+            
+            <div class="videos-container">
+                <!-- سيتم إضافة الفيديوهات ديناميكياً باستخدام JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم عني -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>عنّي</h2>
+                <p>تعرف أكثر على بلال X راكون</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>مرحباً، أنا بلال</h3>
+                    <p>أنا صانع محتوى متخصص في ألعاب الرعب وخاصة سلسلة Resident Evil. أشارك شغفي بهذه الألعاب من خلال محتوى عربي مميز على منصات التواصل الاجتماعي.</p>
+                    <p>بدأت رحلتي مع Resident Evil منذ الطفولة، ومنذ ذلك الحين وأنا مغرم بهذا العالم المليء بالإثارة والتشويق.</p>
+                    <p>هدفي هو إنشاء مجتمع عربي لمحبي ألعاب الرعب وتبادل الخبرات والمعرفة حول هذا العالم المثير.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="Me.png" alt="بلال X راكون">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>التواصل</h2>
+                <p>تواصل معي عبر منصات التواصل الاجتماعي</p>
+            </div>
+            
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <i class="fab fa-youtube"></i>
+                    <h3>يوتيوب</h3>
+                    <a href="https://www.youtube.com/@raccoonbila" target="_blank">أضــغط هـنـا</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-tiktok"></i>
+                    <h3>تيك توك</h3>
+                    <a href="https://www.tiktok.com/@bgxps" target="_blank">أضــغط هـنـا</a>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fab fa-instagram"></i>
+                    <h3>إنستغرام</h3>
+                    <a href="https://www.instagram.com/bilalxracoon/" target="_blank">أضــغط هـنـا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class=""></div>
+            <!--شعار صورة logo.png-->
+            <img src="logo.png" alt="شعار بلال X راكون">
+            <!--تصغير و تصميم مكان logo.png-->
+            <style>
+                footer img {
+                    max-width: 100px;
+                    height: auto;
+                    border-radius: 50%;
+                    
+                }
+            </style>
+            <p class="footer-text">جميع الحقوق محفوظة © 2025</p>
+            <p class="footer-text">DeveLoper : Mohammed Al-Baqer</p>
+        </div>
+    </footer>
+
+    <!-- أزرار التحكم -->
+    <div class="theme-switch">
+        <i class="fas fa-moon"></i>
+    </div>
+    
+    <div class="language-switch">
+        <i class="fas fa-globe"></i>
+    </div>
+
+    <!-- الصوتيات -->
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" preload="auto"></audio>
+
+    <!-- المكتبات -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
+    <script>
+        // بيانات المعرض
+        const galleryImages = [
+            { id: 1, src: 'image/RacoonCity.webp', title: 'Raccoon City' },
+            { id: 2, src: 'image/UmbrellaCoproration.avif', title: 'Umbrella Corp' },
+            { id: 3, src: 'image/Leon.S.Kennedy.avif', title: 'Leon.S.Kennedy' },
+            { id: 4, src: 'image/RE7.jpg', title: 'Resident Evil 7 Biohazard' },
+            { id: 5, src: 'image/LogoRE7.jpg', title: 'Logo Resident Evil 7' },
+            { id: 6, src: 'image/CR.jpg', title: 'chris redfield' }
+        ];
+
+        // بيانات الفيديوهات
+        const videosData = [
+            { id: 1, title: 'بودكاست تحليل Resident Evil 9 Requiem مع صديقي موسى .', thumbnail: 'image1.png', link: 'https://www.youtube.com/watch?v=sUNDd-A86a0&t=32s' },
+            { id: 2, title: 'سلسلة تختيم Resident Evil 2 Remake', thumbnail: 'RE2.png', link: 'https://www.youtube.com/watch?v=sUNDd-A86a0&t=32s' },
+            { id: 3, title: 'تختيم لعبة "حكاية طاعون"', thumbnail: 'GamePlay.png', link: 'https://www.youtube.com/watch?v=sUNDd-A86a0&t=32s' }
+        ];
+
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // إخفاء شاشة التحميل بعد 2 ثانية
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading-screen').style.display = 'none';
+                }, 500);
+            }, 2000);
+
+            // تهيئة تأثيرات GSAP
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // تأثيرات للعناصر
+            gsap.from('.hero-content', { 
+                duration: 1, 
+                y: 50, 
+                opacity: 0, 
+                ease: 'power3.out' 
+            });
+            
+            gsap.from('.social-icon', {
+                duration: 1,
+                stagger: 0.1,
+                y: 30,
+                opacity: 0,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+            
+            // تأثيرات التمرير
+            gsap.utils.toArray('section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1
+                });
+            });
+            
+            // ملء معرض الصور
+            const galleryGrid = document.querySelector('.gallery-grid');
+            galleryImages.forEach(image => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image.src}" alt="${image.title}">
+                    <div class="gallery-overlay">
+                        <h3>${image.title}</h3>
+                        <a href="${image.src}" download class="download-btn">تحميل</a>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            // ملء قسم الفيديوهات
+            const videosContainer = document.querySelector('.videos-container');
+            videosData.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                videoCard.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="${video.thumbnail}" alt="${video.title}">
+                    </div>
+                    <div class="video-info">
+                        <h3>${video.title}</h3>
+                        <a href="${video.link}" class="watch-btn">مشاهدة</a>
+                    </div>
+                `;
+                videosContainer.appendChild(videoCard);
+            });
+            
+            // تأثير الزومبي الذي يتبع الماوس
+            const zombie = document.querySelector('.zombie');
+            let mouseX = 0;
+            let mouseY = 0;
+            let zombieX = 0;
+            let zombieY = 0;
+            let speed = 0.1;
+
+            
+            function animateZombie() {
+                // حساب المسافة بين موقع الماوس والزومبي
+                let distX = mouseX - zombieX;
+                let distY = mouseY - zombieY;
+                let distance = Math.sqrt(distX * distX + distY * distY);
+
+                
+                // تحديث موقع الزومبي بتحريكه تدريجياً نحو الماوس
+                zombieX = zombieX + (distX * speed);
+                zombieY = zombieY + (distY * speed);
+                
+                // تطبيق الموقع على عنصر الزومبي
+                zombie.style.left = zombieX + 'px';
+                zombie.style.top = zombieY + 'px';
+                
+                // استدعاء الدالة مرة أخرى في الإطار التالي
+                requestAnimationFrame(animateZombie);
+            }
+            
+            // بدء تحريك الزومبي
+            animateZombie();
+            
+            // تحديث موقع الماوس عند الحركة
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX - 50; // تعديل المركز
+                mouseY = e.clientY - 75; // تعديل المركز
+            });
+            
+            // صوت النقر على الأزرار
+            const clickSound = document.getElementById('click-sound');
+            const buttons = document.querySelectorAll('a, button, .theme-switch, .language-switch');
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    clickSound.currentTime = 0;
+                    clickSound.play();
+                });
+            });
+            
+            // تبديل وضع الهيدر عند التمرير
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('sticky');
+                } else {
+                    header.classList.remove('sticky');
+                }
+            });
+            
+            // تبديل القائمة على الجوال
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // تبديل الوضع الداكن/الفاتح
+            const themeSwitch = document.querySelector('.theme-switch');
+            themeSwitch.addEventListener('click', () => {
+                document.documentElement.setAttribute('data-theme', 
+                    document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+                
+                themeSwitch.innerHTML = document.documentElement.getAttribute('data-theme') === 'light' ? 
+                    '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            
+            // تبديل اللغة
+            const languageSwitch = document.querySelector('.language-switch');
+            languageSwitch.addEventListener('click', () => {
+                const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+                document.documentElement.setAttribute('dir', isRtl ? 'ltr' : 'rtl');
+                document.documentElement.setAttribute('lang', isRtl ? 'en' : 'ar');
+                
+                // تغيير النصوص حسب اللغة
+                if (isRtl) {
+                    // الترجمة إلى الإنجليزية
+                    document.querySelector('title').textContent = 'Bilal X Raccoon - Resident Evil Content Creator';
+                    document.querySelector('.logo').innerHTML = 'Bilal <span>X</span> Raccoon';
+                    document.querySelector('.hero-content h1').innerHTML = 'Bilal <span>X</span> Raccoon';
+                    document.querySelector('.hero-content p').textContent = 'Resident Evil content creator 🎮🧟';
+                    
+                    // عناوين الأقسام
+                    document.querySelectorAll('.nav-menu a')[0].textContent = 'Home';
+                    document.querySelectorAll('.nav-menu a')[1].textContent = 'Gallery';
+                    document.querySelectorAll('.nav-menu a')[2].textContent = 'Videos';
+                    document.querySelectorAll('.nav-menu a')[3].textContent = 'About';
+                    document.querySelectorAll('.nav-menu a')[4].textContent = 'Contact';
+                    
+                    document.querySelector('#gallery .section-title h2').textContent = 'Wallpapers Gallery';
+                    document.querySelector('#gallery .section-title p').textContent = 'Wallpapers and images inspired by Resident Evil world';
+                    
+                    document.querySelector('#videos .section-title h2').textContent = 'Videos';
+                    document.querySelector('#videos .section-title p').textContent = 'Latest video content on social platforms';
+                    
+                    document.querySelector('#about .section-title h2').textContent = 'About Me';
+                    document.querySelector('#about .section-title p').textContent = 'Learn more about Bilal X Raccoon';
+                    
+                    document.querySelector('#about .about-text h3').textContent = 'Hello, I\'m Bilal';
+                    document.querySelectorAll('#about .about-text p')[0].textContent = 'I am a content creator specialized in horror games, especially the Resident Evil series. I share my passion for these games through distinctive Arabic content on social media platforms.';
+                    document.querySelectorAll('#about .about-text p')[1].textContent = 'My journey with Resident Evil started since childhood, and since then I have been fascinated by this world full of excitement and suspense.';
+                    document.querySelectorAll('#about .about-text p')[2].textContent = 'My goal is to create an Arabic community for horror game lovers and exchange experiences and knowledge about this exciting world.';
+                    
+                    document.querySelector('#contact .section-title h2').textContent = 'Contact';
+                    document.querySelector('#contact .section-title p').textContent = 'Contact me via social media platforms';
+                    
+                    document.querySelector('.footer-text').textContent = '© 2025 Bilal X Raccoon. All rights reserved.';
+                } else {
+                    // العودة إلى العربية
+                    document.querySelector('title').textContent = 'بلال X راكون - صانع محتوى Resident Evil';
+                    document.querySelector('.logo').innerHTML = 'بلال <span>X</span> راكون';
+                    document.querySelector('.hero-content h1').innerHTML = 'بلال <span>X</span> راكون';
+                    document.querySelector('.hero-content p').textContent = 'صانع محتوى عاشق Resident Evil 🎮🧟';
+                    
+                    // عناوين الأقسام
+                    document.querySelectorAll('.nav-menu a')[0].textContent = 'الرئيسية';
+                    document.querySelectorAll('.nav-menu a')[1].textContent = 'المعرض';
+                    document.querySelectorAll('.nav-menu a')[2].textContent = 'الفيديوهات';
+                    document.querySelectorAll('.nav-menu a')[3].textContent = 'عنّي';
+                    document.querySelectorAll('.nav-menu a')[4].textContent = 'التواصل';
+                    
+                    document.querySelector('#gallery .section-title h2').textContent = 'معرض الخلفيات';
+                    document.querySelector('#gallery .section-title p').textContent = 'خلفيات وصور مستوحاة من عالم Resident Evil';
+                    
+                    document.querySelector('#videos .section-title h2').textContent = 'الفيديوهات';
+                    document.querySelector('#videos .section-title p').textContent = 'أحدث محتوى الفيديو على منصات التواصل';
+                    
+                    document.querySelector('#about .section-title h2').textContent = 'عنّي';
+                    document.querySelector('#about .section-title p').textContent = 'تعرف أكثر على بلال X راكون';
+                    
+                    document.querySelector('#about .about-text h3').textContent = 'مرحباً، أنا بلال';
+                    document.querySelectorAll('#about .about-text p')[0].textContent = 'أنا صانع محتوى متخصص في ألعاب الرعب وخاصة سلسلة Resident Evil. أشارك شغفي بهذه الألعاب من خلال محتوى عربي مميز على منصات التواصل الاجتماعي.';
+                    document.querySelectorAll('#about .about-text p')[1].textContent = 'بدأت رحلتي مع Resident Evil منذ الطفولة، ومنذ ذلك الحين وأنا مغرم بهذا العالم المليء بالإثارة والتشويق.';
+                    document.querySelectorAll('#about .about-text p')[2].textContent = 'هدفي هو إنشاء مجتمع عربي لمحبي ألعاب الرعب وتبادل الخبرات والمعرفة حول هذا العالم المثير.';
+                    
+                    document.querySelector('#contact .section-title h2').textContent = 'التواصل';
+                    document.querySelector('#contact .section-title p').textContent = 'تواصل معي عبر منصات التواصل الاجتماعي';
+                    
+                    document.querySelector('.footer-text').textContent = '© 2025 بلال X راكون. جميع الحقوق محفوظة.';
+                }
+            });
+            
+            // تأثيرات Parallax للخلفية
+            const heroBg = document.querySelector('.hero-bg');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+                heroBg.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+            });
+        });
+
+    </script>
+</body>
+</html>
