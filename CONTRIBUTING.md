@@ -1,4 +1,4 @@
-# Contributing to CPython
+# Contributing to Balxr.github.io
 
 Thank you for your interest in contributing! 🙌  
 We welcome all kinds of contributions, including:
